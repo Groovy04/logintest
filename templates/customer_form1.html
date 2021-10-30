@@ -1,0 +1,65 @@
+<head>
+    <style>
+    
+    #myform {
+        width: 40%;
+    }
+    
+    </style>
+</head>
+{% extends "base.html"%}
+
+
+{%block content%}
+
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+<p><h3> Müşteri Giriş Formu / Taslak - Ver001:</h3></p>
+
+{% if name %}
+    <b><h3> Hello {{name}}! How are you today? </h3></b>
+{% else %}
+    <br/>
+    <form method="POST", id="myform">
+        {{form.hidden_tag()}}
+        {{form.company_name.label(class="form-label")}}<br/>
+        {{form.company_name(class="form-control")}}
+        {{form.staff_name.label(class="form-label")}}<br/>
+        {{form.staff_name(class="form-control")}}
+        {{form.telephone.label(class="form-label")}}<br/>
+        {{form.telephone(class="form-control")}}
+        {{form.email.label(class="form-label")}}<br/>
+        {{form.email(class="form-control")}}
+        {{form.webpage.label(class="form-label")}}<br/>
+        {{form.webpage(class="form-control")}}
+        {{form.notes.label(class="form-label")}}<br/>
+        {{form.notes(class="form-control")}}
+        {{form.company_country.label(class="form-label")}}<br/>
+        {{form.company_country(class="form-control")}}
+        {{form.company_address.label(class="form-label")}}<br/>
+        {{form.company_address(class="form-control")}}
+    <br/>
+        {{form.submit_field(class="btn btn-outline-primary")}}
+    </form>
+
+
+
+    <p><b>Our customers are as follows:</b></p>
+    <table class="table table-hover table-bordered table-striped">
+    {% for our_customer in our_customers %}
+        <tr>
+        <td>{{ our_customer.id }}</td> <td>{{ our_customer.comp_name_db }}</td> <td>{{ our_customer.company_country_db }}</td>
+        </tr>
+    {% endfor %}
+    
+    </table>
+
+
+{% endif %}
+<br/><br/>
+
+
+{%endblock%}

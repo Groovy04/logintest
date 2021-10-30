@@ -1,0 +1,33 @@
+
+{% extends "base.html"%}
+
+
+{%block content%}
+<h6>LOGIN TESTS</h6>
+
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+
+
+{% if name %}
+    <b><h3> Hello {{name}}! How are you today? </h3></b>
+{% else %}
+    <b> <h3> Please enter your password below</h3> </b>
+    <br/>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.name_field.label(class="form-label")}}<br/>
+        {{form.name_field(class="form-control")}}
+        <br/>
+        {{form.submit_field(class="btn btn-outline-primary")}}
+    </form>
+
+
+{% endif %}
+<br/><br/>
+<p><b>Stay healthy!</b></p>
+
+{%endblock%}

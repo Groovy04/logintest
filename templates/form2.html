@@ -1,0 +1,59 @@
+
+{% extends "base.html"%}
+
+{%block content%}
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+<p><h3> Form 2 SQAlchemy exercises :</h3></p>
+
+{% if name %}
+    <b><h3> Hello {{name}}! This is a SQLAlchemy Test </h3></b>
+
+    <p><b>Our recorded users are as follows:</b></p>
+
+    <table class="table table-hover table-bordered table-striped table-dark">
+        {% for our_user in our_users %}
+            <tr>
+            <td>{{ our_user.id }}</td> <td><a href="{{url_for('update',id=our_user.id)}}">{{ our_user.name }}</a></td> <td>{{ our_user.email }}</td><td><a href="{{url_for('delete',id=our_user.id)}}">Delete</a></td>
+            
+        </tr>
+        {% endfor %}
+        
+        </table>
+
+{% else %}
+    <b> <h3> Please fill in your credentials below.. :) </h3> </b>
+    <br/>
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.name_field.label(class="form-label")}}<br/>
+        {{form.name_field(class="form-control")}}
+        <br/>
+        {{form.email_field.label(class="form-label")}}<br/>
+        {{form.email_field(class="form-control")}}
+        <br/>
+        {{form.submit_field(class="btn btn-outline-primary")}}
+    </form>
+    </div>
+
+<p><b>Our users are as follows:</b></p>
+<table class="table table-hover table-bordered table-striped">
+{% for our_user in our_users %}
+    <tr>
+    <td>{{ our_user.id }}</td> <td><a href="{{url_for('update',id=our_user.id)}}">{{ our_user.name }}</a></td> <td>{{ our_user.email }}</td><td><a href="{{url_for('delete',id=our_user.id)}}">Delete</a></td>
+    
+</tr>
+{% endfor %}
+
+</table>
+
+{% endif %}
+<br/><br/>
+<p><b>It is a nice day to learn and grow, isn't it?</b></p>
+
+
+{%endblock%}

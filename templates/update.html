@@ -1,0 +1,52 @@
+
+{% extends "base.html"%}
+
+{%block content%}
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+
+<p><h3> Updating Exercises SQAlchemy exercises :</h3></p>
+
+{% if name %}
+    <b><h3> Hello {{name}}! This is UPDATING EXERCISES SQLAlchemy Test </h3></b>
+
+    <p><b>Our recorded users are as follows:</b></p>
+
+    <table class="table table-hover table-bordered table-striped table-dark">
+        {% for our_user in our_users %}
+            <tr>
+            <td>{{ our_user.id }}</td> <td>{{ our_user.name }}</td> <td>{{ our_user.email }}</td>
+            </tr>
+        {% endfor %}
+        
+        </table>
+
+{% else %}
+    <b> <h3> Updating user... :)##  test </h3> </b>
+    <br/>
+    <div class="shadow p-3 mb-5 bg-body rounded">
+    <form action="/update/{{ name_to_update.id }}"  method="POST">
+        {{form.hidden_tag()}}
+        {{form.name_field.label(class="form-label")}}<br/>
+        {{form.name_field(class="form-control", value=name_to_update.name)}}
+        <br/>
+        {{form.email_field.label(class="form-label")}}<br/>
+        {{form.email_field(class="form-control", value=name_to_update.email)}}
+        <br/>
+        {{form.submit_field(class="btn btn-outline-primary")}}
+        <a href="{{url_for('delete',id=id)}}" button type="button" class="btn btn-warning">Delete</a>
+    </form>
+    </div>
+
+ 
+
+</table>
+
+{% endif %}
+<br/><br/>
+<p><b>It is a nice day to learn and grow, isn't it?</b></p>
+
+
+{%endblock%}

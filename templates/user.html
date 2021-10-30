@@ -1,0 +1,27 @@
+
+{% extends "base.html"%}
+
+
+{%block content%}
+<h4>Fly high? Take it easy and busy!</h4>
+<h3>Keep going.</h3>
+
+<p><h2>{{name|capitalize}}</h2></p>
+<p><h2>How is it going {{name2}} ?</h2></p>
+
+<p><h3> The countries in your region are:</h3></p>
+
+{%for country in country_group%}
+
+{{country}}</br>
+
+{% endfor%}
+
+
+<h3> The most important country is:</h3>
+
+<h4>{{country_group.2}}</h4>
+
+<p>It is a nice day to learn and grow, isn't it?</p>
+
+{%endblock%}
