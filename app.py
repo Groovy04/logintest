@@ -29,7 +29,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9D
     database = "sql11445951"
 """
 #Secret key
-app.config['SECRET_KEY'] = "MYSUPERKEY"
+app.config['SECRET_KEY'] = "xxxxxxxxxx"
 #Initialize the adatabase
 db = SQLAlchemy(app)
 
