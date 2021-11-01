@@ -21,7 +21,7 @@ app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///myusers.db"
 
 #New database
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql11447859:MdRl3fJN6l@sql11.freemysqlhosting.net/sql11447859"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://tansubaktiran:Avz9p9&9Dgsu_099@193.111.73.99/tansubaktiran"
 
 """ user = "sql11445951",
     password = "xdvDL1Mz2q",
